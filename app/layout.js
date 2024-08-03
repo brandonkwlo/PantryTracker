@@ -12,12 +12,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  useEffect(() => {
-    if (GTM_ID) {
-      TagManager.initialize({ gtmId: GTM_ID });
-    }
-  }, []);
-
   return (
     <html lang="en">
       <body className={inter.className}>
