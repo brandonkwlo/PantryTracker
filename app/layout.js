@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
-import { CSPostHogProvider } from "./page";
+import { CSPostHogProvider } from "./providers";
 
 export const metadata = {
   title: "Pantry Tracker AI",

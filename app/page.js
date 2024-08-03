@@ -27,17 +27,6 @@ import {
 import { useEffect, useState } from "react";
 import SearchBar from "@/components/searchbar";
 import SortButton from "@/components/sortbutton";
-import posthog from "posthog-js";
-import { PostHogProvider } from "posthog-js/react";
-
-if (typeof window !== "undefined") {
-  posthog.init(process.env.posthogApiKey, {
-    api_host: process.env.posthogHost,
-  });
-}
-export function CSPostHogProvider({ children }) {
-  return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
-}
 
 const style = {
   position: "absolute",
