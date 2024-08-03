@@ -1,0 +1,44 @@
+body {
+  box-sizing: content-box;
+  margin-top: 5;
+  padding: 3;
+  min-height: 100vh;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    19deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 40%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+@font-face {
+  font-family: tmpfont;
+  src: url("../public/fonts/PTF-OffBit-Trial-Fonts/TTF/OffBitTrial-Dot.ttf");
+}
+
+.tmpfont {
+  font-family: tmpfont;
+}
+
+@font-face {
+  font-family: uniquereg;
+  src: url("../public/fonts/Unique/OpenType-TT/Unique-Regular.ttf");
+}
+
+.uniquereg {
+  font-family: uniquereg;
+}
+
+@font-face {
+  font-family: uniquesemibold;
+  src: url("../public/fonts/Unique/OpenType-TT/Unique-SemiBold.ttf");
+}
+
+.uniquesemibold {
+  font-family: uniquesemibold;
+}
+
+#cardtitle {
+  margin-inline: auto;
+}
