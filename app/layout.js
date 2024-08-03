@@ -1,10 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Script } from "next/script";
-
-const GTM_ID = process.env.GOOGLE_ANALYTICS;
-
 const inter = Inter({ subsets: ["latin"] });
+import { CSPostHogProvider } from "./page";
 
 export const metadata = {
   title: "Pantry Tracker AI",
@@ -15,21 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GTM_ID}');
-          `}
-        </Script>
-      </head>
-      <body className={inter.className}>{children}</body>
+      <CSPostHogProvider>
+        <body className={inter.className}>{children}</body>
+      </CSPostHogProvider>
     </html>
   );
 }
