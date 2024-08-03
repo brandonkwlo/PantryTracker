@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import TagManager from "react-gtm-module";
+const GTM_ID = process.env.GOOGLE_ANALYTICS;
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,9 +12,31 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  useEffect(() => {
+    if (GTM_ID) {
+      TagManager.initialize({ gtmId: GTM_ID });
+    }
+  }, []);
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GTM_ID}');
+            `,
+          }}
+        />
+      </body>
     </html>
   );
 }
